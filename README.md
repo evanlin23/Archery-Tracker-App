@@ -16,11 +16,12 @@
 ## Images
 
 <b> Home Screen: </b> </br>
-<img src="https://github.com/evanlin23/ArcheryTaskApp/assets/113861384/2981495f-2cfe-47f8-acf2-2bf4b24ab586"  width="40%" height="10%">
+
+<img width="313" alt="Home Screen" src="https://github.com/evanlin23/ArcheryTaskApp/assets/113861384/f22783de-edc8-4ef9-9ad7-ab401820e63d">
 
 <b> Arrow Screen: </b> </br>
 
-<img src="https://github.com/evanlin23/ArcheryTaskApp/assets/113861384/8f4a26f4-a55c-4173-83e8-e6ee84db7a3d"  width="40%" height="370">
+<img width="328" alt="Arrow Screen" src="https://github.com/evanlin23/ArcheryTaskApp/assets/113861384/60f3dcff-e7f9-4291-a14d-29d4c97cb8b8" height="300">
 
-<img src="https://github.com/evanlin23/ArcheryTaskApp/assets/113861384/56f18240-0133-4eaf-b092-e36dda1fec7d"  width="40%" height="370">
+<img width="326" alt="Arrow Screen with Arrows Added" src="https://github.com/evanlin23/ArcheryTaskApp/assets/113861384/c3d8e64a-c90a-4c9c-aa61-ca8202b054d8" height="300">
 

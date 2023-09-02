@@ -1,11 +1,11 @@
 # Archery Tracker App
 <p> 
-  Lightweight app used to track score during archery practice. For the National Archery in the Schools Program (NASP), each round consisted of 5 arrows each. This app allows for an easy to use way to track the score for each end, automatically calculating averages and saving the data. 
+  Simple, lightweight app used to track score during archery practice. For the National Archery in the Schools Program (NASP), each round consisted of 5 arrows each. This app allows for an easy to use way to track the score for each end, automatically calculating averages and saving the data. 
 </p>
 
 ## Background
 <p>
-  I used it during my last season of archery practice in high school. I competed at the National Archery Tournament with my team and qualified for the World Tournament. 
+  I used it during my last season of archery practice in high school. I found keeping a spreadsheet in google sheets too tedious, so to optimize practice time I cut down on the time I needed to spend tracking my score. I competed at the National Archery Tournament with my team and qualified for the World Tournament. 
 </p>
 
 ## Usage

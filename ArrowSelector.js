@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import { ScrollView, StyleSheet, View, Button } from 'react-native';
 
 const initialTotals = [
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 ]
 const initialArrows = [
-  false, false, false, false, false, false, false, false, false, false,
+  false, false, false, false, false, false, false, false, false, false, false
 ]
 
 export default function ArrowSelector({childToParent}) {
@@ -27,6 +27,15 @@ export default function ArrowSelector({childToParent}) {
           />
       )
     }
+    buttons.push(
+      <Button
+        color = {'red'}
+        key={10}
+        onPress={() => handleArrowsClick(10)}
+        title = {'Miss'}
+        disabled={!thisToggled[10] && oneToggled}
+      />
+    )
     return buttons;
   }
 

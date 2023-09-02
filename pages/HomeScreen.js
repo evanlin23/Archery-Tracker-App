@@ -57,13 +57,13 @@ function HomeScreen({ navigation, route }) {
       </Text>
 
       <Button
-        title = 'Go to Arrows'
+        title = 'Add Scores'
         onPress = {
           () => navigation.navigate("ArrowSelectionScreen")
         }
       />
       <Button
-        title = 'Go to SignInScreen'
+        title = 'Sign In'
         onPress = {
           () => navigation.navigate("SignInScreen")
         }

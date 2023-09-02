@@ -62,12 +62,6 @@ function HomeScreen({ navigation, route }) {
           () => navigation.navigate("ArrowSelectionScreen")
         }
       />
-      <Button
-        title = 'Sign In'
-        onPress = {
-          () => navigation.navigate("SignInScreen")
-        }
-      />
 
       <Button
         title = 'Clear'

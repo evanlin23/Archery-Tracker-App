@@ -16,49 +16,32 @@ export default function ArrowSelector({childToParent}) {
   //renders the 10 individual buttons (10 -> 1) for arrow values
   renderButtons = () => {
     const buttons = [];
-    for(let i = 0; i < 10; i++) {
+    for(let i = 0; i <= 10; i++) {
+      var title_name = String(10-i);
+      if (i === 10) {
+        title_name = "Miss";
+      }
        buttons.push(
           <Button
             color = {'red'}
             key={i}
             onPress={() => handleArrowsClick(i)}
-            title = {String(10-i)}
+            title = {title_name}
             disabled={!thisToggled[i] && oneToggled}
           />
       )
     }
-    buttons.push(
-      <Button
-        color = {'red'}
-        key={10}
-        onPress={() => handleArrowsClick(10)}
-        title = {'Miss'}
-        disabled={!thisToggled[10] && oneToggled}
-      />
-    )
     return buttons;
   }
 
   function handleArrowsClick(index) {
     //literally have no idea what this does, other than updating something when the buttons are clicked
     const newThisToggled = thisToggled.map((c, i) => {
-      if (i === index) {
-        return !c
-      } else {
-        return c
-      }
+      return i === index ? !c : c;
     });
 
     const newNumArrows = numArrows.map((c, i) => {
-      if (i === index) {
-        if (numArrows[i] === 1) {
-          return -1
-        } else {
-          return 1
-        }
-      } else {
-        return 0
-      }
+      return i === index ? (numArrows[i] === 1 ? -1 : 1) : 0;
     });
 
     setOneToggled(!oneToggled)
@@ -69,11 +52,7 @@ export default function ArrowSelector({childToParent}) {
 
   return  (
     <View style={styles.arrowContainer}>
-      <ScrollView
-        horizontal={true}
-        >
-        {this.renderButtons()}
-      </ScrollView>
+      {this.renderButtons()}
     </View>
   );
 };
@@ -83,6 +62,6 @@ const styles = StyleSheet.create({
   arrowContainer: {
     flexDirection: 'row',
     backgroundColor: 'white',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
   }, 
 });

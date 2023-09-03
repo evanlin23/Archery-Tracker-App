@@ -17,9 +17,22 @@ export default function App() {
   return (
     <NavigationContainer>{
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} initialParams={{paramKey: 0}}/>
-        <Stack.Screen name="ArrowSelectionScreen" component={ArrowSelectionScreen} />
-        <Stack.Screen name="SignInScreen" component={SignInScreen}/>
+        <Stack.Screen 
+          name="Home" 
+          component={HomeScreen} 
+          options={{ title: 'Home Page' }}
+          initialParams={{paramKey: 0}}
+        />
+        <Stack.Screen 
+          name="ArrowSelectionScreen" 
+          options={{ title: 'Add Arrows' }}
+          component={ArrowSelectionScreen} 
+        />
+        <Stack.Screen 
+          name="SignInScreen" 
+          options={{ title: 'Sign In' }}
+          component={SignInScreen}
+        />
       </Stack.Navigator>
     }</NavigationContainer>
   )

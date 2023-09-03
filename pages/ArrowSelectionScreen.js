@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
 import ArrowSelector from '../ArrowSelector.js'
 
 function parsePassedData(numArrows) {
@@ -109,18 +109,20 @@ function ArrowSelectionScreen(navigation) {
     const buttons = [];
     for (let i = 10; i < 20; i += 5) {
       buttons.push(
-        <Button
-          title={i + 'm'}
+        <TouchableOpacity
           key={i}
-          onPress={
-            () => {
-              setDistance(i + 'm');
-              setDistanceClicked(true);
-            }
-          }
+          onPress={() => {
+            setDistance(i + 'm');
+            setDistanceClicked(true);
+          }}
+          style={[
+            styles.distanceButton,
+            distance === i + 'm' ? styles.distanceButtonPressed : null,
+          ]}
         >
-        </Button>
-      )
+          <Text style={styles.buttonText}>{i + 'm'}</Text>
+        </TouchableOpacity>
+      );
     }
     return buttons;
   }
@@ -145,6 +147,22 @@ function ArrowSelectionScreen(navigation) {
     </View>
   )
 }
+const styles = StyleSheet.create({
+  distanceButton: {
+    backgroundColor: '#ccc', // Default color
+    padding: 10,
+    margin: 5,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  distanceButtonPressed: {
+    backgroundColor: '#007bff', // Pressed color
+  },
+  buttonText: {
+    color: 'black', // Text color
+  },
+});
 
 export default ArrowSelectionScreen;
 

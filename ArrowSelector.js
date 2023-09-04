@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { ScrollView, StyleSheet, View, Button } from 'react-native';
+import { ScrollView, StyleSheet, View, Button, TouchableOpacity, Text } from 'react-native';
 
 const initialTotals = [
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
@@ -21,15 +21,24 @@ export default function ArrowSelector({childToParent}) {
       if (i === 10) {
         title_name = "Miss";
       }
-       buttons.push(
-          <Button
-            color = {'red'}
-            key={i}
-            onPress={() => handleArrowsClick(i)}
-            title = {title_name}
-            disabled={!thisToggled[i] && oneToggled}
-          />
-      )
+      
+      buttons.push(
+        <TouchableOpacity
+          color = {'red'}
+          key={i}
+          style={[
+            styles.scoreButton,
+            thisToggled[i] ? styles.scoreButtonPressed : null,
+          ]}
+          onPress={() => handleArrowsClick(i)}
+          title = {title_name}
+          
+        >
+          <Text style={thisToggled[i] ? styles.buttonTextPressed : styles.buttonText}> 
+            {String(title_name)}
+          </Text>
+        </TouchableOpacity>
+      );
     }
     return buttons;
   }
@@ -39,7 +48,7 @@ export default function ArrowSelector({childToParent}) {
     const newThisToggled = thisToggled.map((c, i) => {
       return i === index ? !c : c;
     });
-
+    
     const newNumArrows = numArrows.map((c, i) => {
       return i === index ? (numArrows[i] === 1 ? -1 : 1) : 0;
     });
@@ -61,7 +70,24 @@ export default function ArrowSelector({childToParent}) {
 const styles = StyleSheet.create({
   arrowContainer: {
     flexDirection: 'row',
-    backgroundColor: 'white',
     justifyContent: 'space-evenly',
-  }, 
+    marginHorizontal: 10,
+  },
+  scoreButton: {
+    backgroundColor: '#ccc', // Default color
+    padding: 10,
+    margin: 5,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  scoreButtonPressed: {
+    backgroundColor: '#007bff', // Pressed color
+  },
+  buttonText: {
+    color: 'black', // Text color
+  },
+  buttonTextPressed: {
+    color: 'black', // Text color when pressed
+  },
 });

@@ -1,80 +1,113 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View, Button, TouchableOpacity, ScrollView, SafeAreaView } from "react-native";
 import ArrowSelectionScreen from "../pages/ArrowSelectionScreen.js";
 
-function HomeScreen({ navigation, route }) {
-  const [lastRoundScores, setLastRoundScores] = useState([]);
-  const [formattedScores, setFormattedScores] = useState('');
+function TestPageHome({ navigation, route }) {
+  const { sum, distance, arrowValues, key } = route.params;
   const [newScoresList, setNewScoresList] = useState('');
-  const [sumA, setSumA] = useState(0);
-  const [numA, setNumA] = useState(0);
+  const [sumA10m, setSumA10m] = useState(0);
+  const [numA10m, setNumA10m] = useState(0);
+  const [sumA15m, setSumA15m] = useState(0);
+  const [numA15m, setNumA15m] = useState(0);
 
-  React.useEffect(() => {
-    if ((typeof route.params?.paramKey !== undefined) && (typeof route.params?.id !== undefined)) {
-      const newScore = route.params?.paramKey - route.params?.id; //get round score
-      if (!Number.isNaN(newScore)) {
-        //for finding round average
-        setSumA(sumA + newScore)
-        setNumA(numA + 5)
-
-        //formatting recent scores
-        setNewScoresList(
-          newScoresList + 
-          '\nTotal: ' + newScore + 
-          '     Distance: ' + route.params?.distance + 
-          '     Arrows: ' + route.params?.valueOfArrows.sort(function(a, b){return b - a})
-        );
+  useEffect(() => {
+    if (!(sum == null)) {
+      let arrowValuesFormatted = "";
+      for (let i = 0; i < 4; i++) {
+        arrowValuesFormatted += arrowValues[i] + ", ";
       }
-      
-      //put all the scores into 1 array
-      setLastRoundScores((lastRoundScores) => [
-        ...lastRoundScores, 
-        newScore,
-      ]);
+      arrowValuesFormatted += arrowValues[4];
+
+      if (distance == "10m") {
+        setSumA10m((prevSumA) => prevSumA + sum);
+        setNumA10m((prevNumA) => prevNumA + 5);
+      } else {
+        setSumA15m((prevSumA) => prevSumA + sum);
+        setNumA15m((prevNumA) => prevNumA + 5);
+      }
+      setNewScoresList(
+        newScoresList + 
+        '\nTotal: ' + sum + 
+        '     Distance: ' + distance + 
+        '     Arrows: ' + arrowValuesFormatted
+      );
     }
-  }, [route.params.paramKey]);
+  }, [key]);
 
   return (
-    <View 
-      style={{
-        flex: 1, 
-        alignItems: "center", 
-        justifyContent: "center" ,
-        backgroundColor: "#F9FBFC",
-      }}
-    >
-      
-      <Text>
-        Round Average: {
-          (numA > 0) 
-            ? Math.round((sumA/numA * 5 + Number.EPSILON) * 100) / 100 //calc avg & round to 2 decimal places
-            : 'No Arrows Yet'
-          }
-      </Text>
+    <SafeAreaView
+      style = {styles.container}
+    > 
+      <ScrollView> 
 
-      <Text>
-        Recent Scores: {newScoresList}
-      </Text>
+    <View>
+      <View
+        style = {styles.viewStyle}
+      >
+        <Text>
+          <Text style={styles.textStyle}>Archery Practice Tracker</Text>
+          {"\n"}
+          10m Round Average:{" "}
+          { numA10m > 0 ? (sumA10m / numA10m * 5).toFixed(2) : "No 10m Rounds Yet"}
+          {"\n"}
+          15m Round Average:{" "}
+          { numA15m > 0 ? (sumA15m / numA15m * 5).toFixed(2) : "No 15m Rounds Yet"}
 
-      <Button
-        title = 'Add Scores'
+          <Text style={styles.textStyle}>
+            {((numA10m > 0) || (numA15m > 0)) ? "\n\nRecent Ends: ": ""}
+          </Text>
+          {newScoresList}
+        </Text>
+      </View>
+      <TouchableOpacity
+        style = {styles.buttonStyle}
         onPress = {
-          () => navigation.navigate("ArrowSelectionScreen")
-        }
-      />
-
+          () => navigation.navigate("TestPage")
+        }> 
+        <Text 
+          style = {[styles.textStyle, {color: "white"}]}
+        > Add Arrows </Text>
+      </TouchableOpacity>
+      <View
+        style = {styles.viewStyle}
+      > 
       <Button
         title = 'Clear'
         onPress = {() => {
           //reset recent & average
           setNewScoresList('');
-          setSumA(0);
-          setNumA(0);
+          setSumA10m(0);
+          setNumA10m(0);
+          setSumA15m(0);
+          setNumA15m(0);
         }}
       />
+      </View>
     </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
-
-export default HomeScreen;
-
+const styles = StyleSheet.create({
+  textStyle: {
+    fontSize: 16, 
+    fontWeight: "bold",
+  }, 
+  buttonStyle: {
+    alignItems: 'center',
+    backgroundColor: 'blue',
+    borderColor: 'blue',
+    color: "white",
+    borderRadius: 5,
+    borderWidth: 1,
+    margin: 5,
+    padding: 20,
+  },
+  viewStyle: {
+    margin: 5,
+  }, 
+  container: {
+    flex: 1,
+  },
+});
+export default TestPageHome;

@@ -1,3 +1,4 @@
+//Archive this; not used anymore. 
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
 import ArrowSelector from '../ArrowSelector.js'
@@ -165,4 +166,3 @@ const styles = StyleSheet.create({
 });
 
 export default ArrowSelectionScreen;
-

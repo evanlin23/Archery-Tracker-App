@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Button, TouchableOpacity, ScrollView, SafeAreaView } from "react-native";
 
-function TestPageHome({ navigation, route }) {
+function HomeScreen ({ navigation, route }) {
   const initialArrows = {
     sumA10m: 0,
     numA10m: 0,
@@ -142,4 +142,4 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
-export default TestPageHome;
+export default HomeScreen;

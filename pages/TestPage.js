@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import ArrowSelector2 from '../ArrowSelector2';
+import ArrowSelector2 from '../src/components/ArrowSelector2/ArrowSelector2';
 import { useNavigation } from '@react-navigation/native'; 
 
 function TestPage() {

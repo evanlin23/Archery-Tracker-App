@@ -16,12 +16,16 @@
 ## Images
 
 <b> Home Screen: </b> </br>
-
-<img width="313" alt="Home Screen" src="https://github.com/evanlin23/ArcheryTaskApp/assets/113861384/f22783de-edc8-4ef9-9ad7-ab401820e63d">
+Main home page for the app. </br>
+Default Home: </br>
+<img width="333" alt="home_empty" src="https://github.com/evanlin23/Index-Maker/assets/113861384/ab749b1f-c53e-438e-b23d-6f9704f485c3"> 
+</br>
+Home Page with some ends: </br>
+<img width="333" alt="home_filled" src="https://github.com/evanlin23/Index-Maker/assets/113861384/f3ddc968-afec-4abb-9882-9b302e00dc59">
 
 <b> Arrow Screen: </b> </br>
-
-<img width="328" alt="Arrow Screen" src="https://github.com/evanlin23/ArcheryTaskApp/assets/113861384/60f3dcff-e7f9-4291-a14d-29d4c97cb8b8" height="300">
-
-<img width="326" alt="Arrow Screen with Arrows Added" src="https://github.com/evanlin23/ArcheryTaskApp/assets/113861384/c3d8e64a-c90a-4c9c-aa61-ca8202b054d8" height="300">
-
+Screen to add arrows: </br>
+<img width="334" alt="score_empty" src="https://github.com/evanlin23/Index-Maker/assets/113861384/a0b76d14-24a6-4323-85bd-8df9f70d57e2">
+</br>
+Screen to add arrows with arrows selected: </br>
+<img width="335" alt="score_filled" src="https://github.com/evanlin23/Index-Maker/assets/113861384/c49fbec3-39fe-4047-995f-121b9cae6e9f">

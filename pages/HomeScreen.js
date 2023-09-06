@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Button, TouchableOpacity, ScrollView, SafeAreaView } from "react-native";
-import PieChart from 'react-native-pie-chart'
 
 import ArrowSelectionScreen from "../pages/ArrowSelectionScreen.js";
 
 function TestPageHome({ navigation, route }) {
   const { sum, distance, arrowValues, key } = route.params;
   const [newScoresList, setNewScoresList] = useState('');
+
+  /*
+  
+  */
   const [sumA10m, setSumA10m] = useState(0);
   const [numA10m, setNumA10m] = useState(0);
   const [sumA15m, setSumA15m] = useState(0);

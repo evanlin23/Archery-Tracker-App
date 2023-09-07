@@ -13,6 +13,13 @@
   To add arrows, press on the "Add Scores" button, which will take you to the screen to add a set of 5 arrows (1 round). Select the score for each arrow, as well as the distance (NASP only practices at either 10 meters or 15 meters). After pressing save, it will navigate back to the home screen, and the average for the practice session will be displayed. To clear the session, press the "Clear" button.
 </p>
 
+## Currently working on...
+
+  1. Statistic Page
+  2. Way to sign in 
+  3. Way to save data long term
+  4. Style and how the app looks
+
 ## Images
 
 <b> Home Screen: </b> </br>

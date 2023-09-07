@@ -19,18 +19,41 @@ function HomeScreen ({ navigation, route }) {
   const [newScoresList, setNewScoresList] = useState('');
   const [arrows, setArrows] = useState(initialArrows);
   
- 
+  //Leftmost is number of 0s, rightmost is number of 10s
+  const initialArrowStatistics = {
+    values10m: Array(11).fill(0),
+    values15m: Array(11).fill(0),
+  }
+
+  const [arrowStatistics, setArrowStatistics] = useState(initialArrowStatistics);
+
   reset = () => {
     setNewScoresList('');
     setArrows(initialArrows)
+  };
+
+  const saveValues = () => {
+    const key = Date.now();
+    navigation.navigate('AnalyticsScreen', {
+      arrowStatistics,
+      key,
+    });
   };
 
   useEffect(() => {
     if (!(sum == null)) {
       const distanceKey = distance === "10m" ? "10m" : "15m";
       const arrowStats = { ...arrows };
+      const newArrowStatistics = { ...arrowStatistics };
+
       arrowStats[`sumA${distanceKey}`] += sum;
       arrowStats[`numA${distanceKey}`] += 5;
+      
+      for (let i = 0; i < 5; i++) {
+        newArrowStatistics[`values${distanceKey}`][arrowValues[i]]++;
+      }
+
+      setArrowStatistics(newArrowStatistics);
 
       for (let i = 0; i < 5; i++) {
         if (arrowValues[i] === 10) {
@@ -72,11 +95,11 @@ function HomeScreen ({ navigation, route }) {
                   {"\n"}Average:{" "}
                   { arrows[`numA${index}`] > 0 ? (arrows[`sumA${index}`] / arrows[`numA${index}`] * 5).toFixed(2) : ""}
                   {"\n"}% Tens:{" "}
-                  { arrows[`numA${index}`] > 0 ? (arrows[`num10${index}`] / arrows[`numA${index}`] * 100) + "%": ""}
+                  { arrows[`numA${index}`] > 0 ? (arrows[`num10${index}`] / arrows[`numA${index}`] * 100).toFixed(2) + "%": ""}
                   {"\n"}% Nines:{" "}
-                  { arrows[`numA${index}`] > 0 ? (arrows[`num9${index}`] / arrows[`numA${index}`] * 100) + "%": ""}
+                  { arrows[`numA${index}`] > 0 ? (arrows[`num9${index}`] / arrows[`numA${index}`] * 100).toFixed(2) + "%": ""}
                   {"\n"}% Other:{" "}
-                  { arrows[`numA${index}`] > 0 ? (arrows[`numOther${index}`] / arrows[`numA${index}`]* 100) + "%": ""}
+                  { arrows[`numA${index}`] > 0 ? (arrows[`numOther${index}`] / arrows[`numA${index}`]* 100).toFixed(2) + "%": ""}
                   {"\n\n"}
                 </Text>
               ))}
@@ -97,6 +120,16 @@ function HomeScreen ({ navigation, route }) {
               style = {[styles.textStyle, {color: "white"}]}
               > 
               Add Arrows 
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style = {styles.buttonStyle}
+            onPress = {saveValues}
+            > 
+            <Text 
+              style = {[styles.textStyle, {color: "white"}]}
+              > 
+              Statistics
             </Text>
           </TouchableOpacity>
           <View

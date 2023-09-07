@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeScreen from './pages/HomeScreen.js'
 import TestPage from './pages/TestPage.js'
-
+import AnalyticsScreen from './pages/AnalyticsScreen.js'
 import SignInScreen from './src/screens/SignInScreen';
 
 const Stack = createNativeStackNavigator();
@@ -25,6 +25,11 @@ export default function App() {
           name="TestPage" 
           options={{ title: 'Add Arrow Scores' }}
           component={TestPage}
+        />
+        <Stack.Screen 
+          name="AnalyticsScreen" 
+          options={{ title: 'Statistics' }}
+          component={AnalyticsScreen}
         />
       </Stack.Navigator>
     }</NavigationContainer>

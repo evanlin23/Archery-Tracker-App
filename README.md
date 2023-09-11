@@ -15,7 +15,7 @@
 
 ## Currently working on...
 
-  1. Statistic Page
+  1. Statistics Page
   2. Way to sign in 
   3. Way to save data long term
   4. Style and how the app looks
